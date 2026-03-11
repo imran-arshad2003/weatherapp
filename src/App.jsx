@@ -10,15 +10,15 @@ const App = () => {
   const [suggestions, setsuggestions] = useState([])
   const [error, setError] = useState("")
 
-  const weatherImages = {
-    Clear: "/clear.jpg",
-    Clouds: "/clouds.jpg",
-    Rain: "/rain.jpg",
-    Thunderstorm: "/storm.jpg",
-    Snow: "/snow.jpg",
-    Mist: "/mist.jpg",
-    Default: "/default.jpg"
-  };
+ const weatherImages = {
+  Clear: "./clear.jpg",
+  Clouds: "./clouds.jpg",
+  Rain: "./rain.jpg",
+  Thunderstorm: "./storm.jpg",
+  Snow: "./snow.jpg",
+  Mist: "./mist.jpg",
+  Default: "./default.jpg"
+};
 
   const weatherMain = weather?.weather[0].main;
   console.log(weatherMain);
@@ -66,7 +66,7 @@ const App = () => {
   }
 
   return (
-    <div className="bg-[url('/default.jpg')] bg-cover bg-center h-screen flex flex-col items-center py-20">
+    <div className="bg-[url('./default.jpg')] bg-cover bg-center h-screen flex flex-col items-center py-20">
 
 
       <div className=" backdrop-blur-lg border-2 h-screen border-gray-400 w-1/2 sm:w-[80%] md:w-[60%] lg:w-[40%]  rounded-xl p-6 shadow-lg hover:scale-98 text-center">
