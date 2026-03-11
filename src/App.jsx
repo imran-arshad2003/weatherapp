@@ -48,7 +48,7 @@ const App = () => {
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-start py-10 px-4"
+      className="min-h-screen w-full flex flex-col items-center justify-start py-10 px-4 text-white"
       style={{ backgroundImage: "url('./default.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       <div className="backdrop-blur-lg border border-gray-400 w-full max-w-md rounded-xl p-6 shadow-lg text-center">
