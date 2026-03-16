@@ -21,23 +21,21 @@ const App = () => {
 
   const weatherMain = weather?.weather[0].main;
   const weatherImage = weatherImages[weatherMain] || weatherImages.Default;
-  const API = import.meta.env.VITE_WEATHER_API_KEY
+  
 
   const searchCity = (value) => {
     setcity(value)
     if (value.length < 3) return
-    fetch(`https://api.api-ninjas.com/v1/city?name=${value}`, {
-      headers: { "X-Api-Key": import.meta.env.VITE_CITY_API_KEY }
-    })
+   fetch(`/api/cities?name=${value}`)
       .then(res => res.json())
       .then(data => setsuggestions(data))
   }
 
   const getweather = () => {
-    const base = `https://api.openweathermap.org/data/2.5`
+    
 
     // Current weather
-    fetch(`${base}/weather?q=${city}&appid=${API}&units=metric`)
+    fetch(`/api/weather?city=${city}`)
       .then(res => res.json())
       .then(data => {
         if (data.cod !== 200) {
@@ -50,7 +48,7 @@ const App = () => {
         setError("")
 
         // Fetch 5-day forecast after current weather succeeds
-        fetch(`${base}/forecast?q=${city}&appid=${API}&units=metric`)
+        fetch(`/api/forecast?city=${city}`)
           .then(res => res.json())
           .then(fData => setForecast(fData))
       })
@@ -164,7 +162,7 @@ const App = () => {
               </button>
               <button
                 onClick={() => setActiveTab("daily")}
-                className={`flex-1 py-2 text-sm font-semibold transition-colors ${
+                className={`flex-1 py-2 text-sm font-semibold transition-colors  ${
                   activeTab === "daily" ? "bg-blue-900 text-white" : "bg-black/20 text-gray-300"
                 }`}
               >
@@ -174,11 +172,11 @@ const App = () => {
 
             {/* Hourly Forecast */}
             {activeTab === "hourly" && (
-              <div className="flex gap-2 overflow-x-auto pb-2 -scrollbar-hide">
+              <div className="flex gap-2 overflow-x-auto pb-2 -scrollbar-hide ">
                 {hourlyData.map((item, i) => (
                   <div
                     key={i}
-                    className="flex shrink-0 bg-black/30 border border-gray-500 rounded-xl px-3 py-2 text-center text-xs min-w-[72px]"
+                    className=" flex shrink-0 bg-black/30 border border-gray-500 rounded-xl px-3 py-2 text-center text-xs min-w-[72px]"
                   >
                     <p className="font-semibold text-gray-300">{formatHour(item.dt_txt)}</p>
                     <img
